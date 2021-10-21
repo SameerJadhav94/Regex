@@ -104,8 +104,6 @@ public class UserValidator {
         boolean resultPassword2 = validator.validatePasswordPattern2("passwordSam");
         boolean resultPassword3 = validator.validatePasswordPattern3("passwordSam19");
         boolean resultPassword4 = validator.validatePasswordPattern4("Sameer@1994");
-
-
         System.out.println(result);
         System.out.println(resultLastName);
         System.out.println(resultEmail);
@@ -114,5 +112,19 @@ public class UserValidator {
         System.out.println(resultPassword2);
         System.out.println(resultPassword3);
         System.out.println(resultPassword4);
+
+        //Storing all the E-mail pattern in an Array.
+        String [] email = {"abc+100@yahoo.com", "abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com", "abc-100@abc.net", "abc.100@abc.com.au",  "abc@1.com", "abc@gmail.com.com" };
+
+        // Printing if the E-mail Pattern entered is Valid.
+        for (String pattern: email) {
+            boolean Emailresult = validator.validateEmailAddress(pattern);
+            if (Emailresult){
+                System.out.println("The Entered Email Pattern is Valid.");
+            }else{
+                System.out.println("The Entered Email Pattern is Invalid.");
+            }
+        }
+
     }
 }
