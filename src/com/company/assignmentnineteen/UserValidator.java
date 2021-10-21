@@ -8,6 +8,7 @@ public class UserValidator {
     private static final String emailIDPattern = "^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*@([0-9a-zA-Z][-]?)+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$"; //regex
     private static final String mobileNumberPattern = "(0|91)*[ ][7-9][0-9]{9}"; //regex
     private static final String passwordPattern1 = "^[a-zA-Z]{8,}$"; //regex
+    private static final String passwordPattern2 = "^(?=.*[A-Z])[A-Za-z]{8,}$"; //regex
 
     /***
      *
@@ -51,12 +52,22 @@ public class UserValidator {
 
     /***
      *
-     * @param passwordPattern
+     * @param passwordPattern for minimum 8 characters
      * @return
      */
     public boolean validatePasswordPattern1(String passwordPattern) {
         Pattern pattern4 = Pattern.compile(passwordPattern1);
         return pattern4.matcher(passwordPattern).matches();
+    }
+
+    /***
+     *
+     * @param passwordPattern for at least 1 Upper Case Character
+     * @return
+     */
+    public boolean validatePasswordPattern2(String passwordPattern) {
+        Pattern pattern5 = Pattern.compile(passwordPattern2);
+        return pattern5.matcher(passwordPattern).matches();
     }
 
     public static void main(String[] args) {
@@ -68,11 +79,14 @@ public class UserValidator {
         boolean resultEmail = validator.validateEmailAddress("abc+100@yahoo.com");
         boolean resultMobileNumber = validator.validateMobileNumber("0 7568438745");
         boolean resultPassword1 = validator.validatePasswordPattern1("PassWordSam");
-        
+        boolean resultPassword2 = validator.validatePasswordPattern2("passwordSam");
+
+
         System.out.println(result);
         System.out.println(resultLastName);
         System.out.println(resultEmail);
         System.out.println(resultMobileNumber);
         System.out.println(resultPassword1);
+        System.out.println(resultPassword2);
     }
 }
