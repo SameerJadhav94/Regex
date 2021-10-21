@@ -9,6 +9,7 @@ public class UserValidator {
     private static final String mobileNumberPattern = "(0|91)*[ ][7-9][0-9]{9}"; //regex
     private static final String passwordPattern1 = "^[a-zA-Z]{8,}$"; //regex
     private static final String passwordPattern2 = "^(?=.*[A-Z])[A-Za-z]{8,}$"; //regex
+    private static final String passwordPattern3 = "^(?=.*[0-9])(?=.*[A-Z])[A-Za-z0-9]{8,}$"; //regex
 
     /***
      *
@@ -70,6 +71,16 @@ public class UserValidator {
         return pattern5.matcher(passwordPattern).matches();
     }
 
+    /***
+     *
+     * @param passwordPattern for at least 1 Numeric Character
+     * @return
+     */
+    public boolean validatePasswordPattern3(String passwordPattern) {
+        Pattern pattern6 = Pattern.compile(passwordPattern3);
+        return pattern6.matcher(passwordPattern).matches();
+    }
+
     public static void main(String[] args) {
 
         UserValidator validator = new UserValidator();
@@ -80,6 +91,7 @@ public class UserValidator {
         boolean resultMobileNumber = validator.validateMobileNumber("0 7568438745");
         boolean resultPassword1 = validator.validatePasswordPattern1("PassWordSam");
         boolean resultPassword2 = validator.validatePasswordPattern2("passwordSam");
+        boolean resultPassword3 = validator.validatePasswordPattern3("passwordSam19");
 
 
         System.out.println(result);
@@ -88,5 +100,6 @@ public class UserValidator {
         System.out.println(resultMobileNumber);
         System.out.println(resultPassword1);
         System.out.println(resultPassword2);
+        System.out.println(resultPassword3);
     }
 }
